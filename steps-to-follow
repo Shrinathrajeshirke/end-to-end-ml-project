@@ -1,0 +1,33 @@
+1. create git repository
+2. create folder in your local machine
+3. open command prompt --> cd to your new folder --> code . --> to open vs code
+4. open command prompt terminal
+5. create new python environment
+conda create -p venv python==3.12 -y
+6. activate venv
+conda activate venv/
+7. sync git repository with local machine folder
+    1. git init -- to initialize git
+    2. create README.md file in your folder
+    3. git add . -- to add all new files
+    4. git commit -m "first commit" -- to commit the changes
+    5. git status -- to check status
+    6. git branch -M main -- to connect main branch
+    7. git remote add origin <github-repo-url> -- to add connect github repository
+    8. git remote -v -- to check repository
+    9. git config --global user.name "name" -- to setup the global name
+    10. git config --global user.email -- to setup the global email
+    11. git push -u origin main -- to push the files to github
+8. create .gitignore file in github repository --> choose language: python --> commit changes
+9. git pull -- to sync folder with git repo
+10. create setup.py and requirements.txt 
+    setup.py - used to configure and distribute python packages
+    requirements.txt - storing required libraries
+11. create folder "src" --> create "__init__.py" file in it so it will be considered as package
+12. In setup.py -->
+    1. install_requires = get_requirements('requirements.txt') -- make this change
+    2. define get_requirements(file) function
+13. create folder "components" under "src" and create "__init__.py" file
+--> create files --> data_ingestion.py, data_tranformation.py, model_trainer.py
+14. create folder "pipeline" under "src" and create files --> train_pipeline.py, predict_pipeline.py, __init__.py
+15. create common files under "src" --> logger.py, exception.py, utils.py
