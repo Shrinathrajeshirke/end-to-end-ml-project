@@ -2,14 +2,11 @@ FROM python:3.10-slim-buster
 WORKDIR /app
 
 # copy requirements
-COPY requirements.txt .
+COPY . .
 
 # install dependencies
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
-
-# copy application code
-COPY . .   
 
 # expose port
 EXPOSE 5000
