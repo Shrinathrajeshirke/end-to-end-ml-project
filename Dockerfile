@@ -1,8 +1,18 @@
-FROM python:3.12-slim-bookworm
+FROM python:3.10-slim-buster
 WORKDIR /app
-COPY . /app
 
-RUN apt update -y && apt install awscli -y
+# copy requirements
+COPY requirements.txt .
 
-RUN pip install -r requirements.txt
-CMD [ "python3","app.py" ]
+# install dependencies
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
+
+# copy application code
+COPY . .   
+
+# expose port
+EXPOSE 5000
+
+# use gunicorn
+CMD ["gunicorn", "--bind", '0.0.0.0:5000', "--workers", "2", "--timeout", "120", "app:app" ]
